@@ -6,7 +6,7 @@ name: Deploy notebook to databrick
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
 
   workflow_dispatch:
 
@@ -26,9 +26,17 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install databricks-cli
+          databricks -v
 
-      - name: configure databrick cli
+      - name: deploy code to databrick workspace
         run: |
-          export DATABRICKS_HOST=${{secrets.DATABRICKS_HOST}}
-          export DATABRICKS_TOKEN=${{secrets.DATABRICKS_TOKEN}}
+          databricks workspace import_dir ./ /workspace -p workspace
+
+      # - name: Create Databricks Job
+      #   run: |
+      #     databricks jobs create --json-file job_definition.json
+
+      # - name: Run Databricks Job
+      #   run: |
+      #     databricks jobs run-now --job-id JOB_ID
 
