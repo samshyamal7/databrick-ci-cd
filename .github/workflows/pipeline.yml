@@ -30,7 +30,7 @@ jobs:
 
       - name: deploy code to databrick workspace
         run: |
-          databricks workspace import_dir ./ /workspace -p workspace
+          databricks workspace import_dir ./ /workspace
 
       # - name: Create Databricks Job
       #   run: |
