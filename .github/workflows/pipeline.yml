@@ -22,10 +22,16 @@ jobs:
         with:
           python-version: '3.8'
 
+      # - name: Install Databrick CLI
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     pip install databricks-cli
+      #     databricks -v
+  
       - name: Install Databrick CLI
         run: |
-          python -m pip install --upgrade pip
-          pip install databricks-cli
+          brew tap databricks/tap
+          brew install databricks
           databricks -v
 
       - name: Configure databrick cli
