@@ -29,7 +29,8 @@ jobs:
           databricks -v
 
       - name: Configure databrick cli
-        databricks auth login --host https://accounts.cloud.databricks.com/workspaces/3183095243678594?account_id=c164a2e9-fd83-4655-a6c3-a75e409ef4af --client-id a55ba7f6-67fb-4cc5-9a87-83290e5aba0d --client-secrets dose679f01736e2ece7e487c54871f7e97f0
+        run: |
+          databricks auth login --host https://accounts.cloud.databricks.com/workspaces/3183095243678594?account_id=c164a2e9-fd83-4655-a6c3-a75e409ef4af --client-id a55ba7f6-67fb-4cc5-9a87-83290e5aba0d --client-secrets dose679f01736e2ece7e487c54871f7e97f0
 
       - name: deploy code to databrick workspace
         run: |
