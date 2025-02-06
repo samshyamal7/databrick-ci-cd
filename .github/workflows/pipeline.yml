@@ -40,7 +40,7 @@ jobs:
 
       - name: deploy code to databrick workspace
         run: |
-          databricks auth login --client-id $DATABRICKS_CLIENT_ID --client-secret DATABRICKS_CLIENT_SECRET
+          databricks auth login --host $DATABRICKS_HOST --client-id $DATABRICKS_CLIENT_ID --client-secret DATABRICKS_CLIENT_SECRET
 
       # - name: Create Databricks Job
       #   run: |
