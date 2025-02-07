@@ -47,7 +47,7 @@ jobs:
           brew tap databricks/tap
           brew install databricks
           databricks -v
-          databricks clusters list -p workspace
+          databricks clusters list
       # - name: Configure databrick cli
       #   env:
       #     DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
