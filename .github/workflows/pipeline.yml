@@ -56,8 +56,6 @@ jobs:
           brew tap databricks/tap
           brew install databricks
           databricks -v
-          databricks auth -p ~/.databrickscfg workspace
-          databricks auth token
           databricks workspace list
       # - name: Configure databrick cli
       #   env:
