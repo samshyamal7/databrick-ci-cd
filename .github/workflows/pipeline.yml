@@ -27,7 +27,17 @@ jobs:
       #     python -m pip install --upgrade pip
       #     pip install databricks-cli
       #     databricks -v
-  
+
+      - name: Configure databrick cli
+        env:
+          DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
+          DATABRICKS_CLIENT_ID: ${{secrets.DATABRICKS_CLIENT_ID}}
+          DATABRICKS_CLIENT_SECRET: ${{secrets.DATABRICKS_CLIENT_SECRET}}
+        run: |
+          export DATABRICKS_HOST=$"{secrets.DATABRICKS_HOST}"
+          export DATABRICKS_CLIENT_ID=$"{secrets.DATABRICKS_CLIENT_ID}"
+          export DATABRICKS_CLIENT_SECRET=$"{secrets.DATABRICKS_CLIENT_SECRET}"
+
       - name: Install Databrick CLI
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -40,20 +50,21 @@ jobs:
           brew tap databricks/tap
           brew install databricks
           databricks -v
-
-      - name: Configure databrick cli
-        env:
-          DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
-          DATABRICKS_CLIENT_ID: ${{secrets.DATABRICKS_CLIENT_ID}}
-          DATABRICKS_CLIENT_SECRET: ${{secrets.DATABRICKS_CLIENT_SECRET}}
-        run: |
-          export DATABRICKS_HOST=$"{secrets.DATABRICKS_HOST}"
-          export DATABRICKS_CLIENT_ID=$"{secrets.DATABRICKS_CLIENT_ID}"
-          export DATABRICKS_CLIENT_SECRET=$"{secrets.DATABRICKS_CLIENT_SECRET}"
-
-      - name: deploy code to databrick workspace
-        run: |
           databricks auth login --host $DATABRICKS_HOST --client-id $DATABRICKS_CLIENT_ID --client-secret DATABRICKS_CLIENT_SECRET
+
+      # - name: Configure databrick cli
+      #   env:
+      #     DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
+      #     DATABRICKS_CLIENT_ID: ${{secrets.DATABRICKS_CLIENT_ID}}
+      #     DATABRICKS_CLIENT_SECRET: ${{secrets.DATABRICKS_CLIENT_SECRET}}
+      #   run: |
+      #     export DATABRICKS_HOST=$"{secrets.DATABRICKS_HOST}"
+      #     export DATABRICKS_CLIENT_ID=$"{secrets.DATABRICKS_CLIENT_ID}"
+      #     export DATABRICKS_CLIENT_SECRET=$"{secrets.DATABRICKS_CLIENT_SECRET}"
+
+      # - name: deploy code to databrick workspace
+      #   run: |
+      #     databricks auth login --host $DATABRICKS_HOST --client-id $DATABRICKS_CLIENT_ID --client-secret DATABRICKS_CLIENT_SECRET
 
       # - name: Create Databricks Job
       #   run: |
