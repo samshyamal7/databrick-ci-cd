@@ -50,7 +50,7 @@ jobs:
           brew tap databricks/tap
           brew install databricks
           databricks -v
-          databricks auth login -p workspace
+          databricks auth login --host https://accounts.cloud.databricks.com/workspaces -p workspace
       # - name: Configure databrick cli
       #   env:
       #     DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
