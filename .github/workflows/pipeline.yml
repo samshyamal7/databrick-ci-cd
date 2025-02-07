@@ -34,6 +34,7 @@ jobs:
           export DATABRICKS_CLIENT_ID=a55ba7f6-67fb-4cc5-9a87-83290e5aba0d
           export DATABRICKS_CLIENT_SECRET=dose679f01736e2ece7e487c54871f7e97f0
           export account_id=c164a2e9-fd83-4655-a6c3-a75e409ef4af
+          echo $DATABRICKS_HOST
 
       - name: Install Databrick CLI
         run: |
