@@ -56,7 +56,7 @@ jobs:
           brew tap databricks/tap
           brew install databricks
           databricks -v
-          databricks workspace import ./demo_notebook.py /shared/demo_notebook.py
+          databricks workspace import /shared/demo_notebook.py --file ./demo_notebook.py
       # - name: Configure databrick cli
       #   env:
       #     DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
