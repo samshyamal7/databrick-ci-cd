@@ -46,7 +46,6 @@ jobs:
           echo $DATABRICKS_CLIENT_ID
           echo $DATABRICKS_CLIENT_SECRET
           echo $account_id
-          curl --request POST --url https://dbc-86c504bb-e56a.cloud.databricks.com/?autoLogin=true&account_id=c164a2e9-fd83-4655-a6c3-a75e409ef4af&o=3183095243678594/oidc/v1/token --user "$CLIENT_ID:$CLIENT_SECRET" --data 'grant_type=client_credentials&scope=all-apis'
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           echo >> /home/runner/.bashrc
           echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/runner/.bashrc
@@ -57,8 +56,8 @@ jobs:
           brew tap databricks/tap
           brew install databricks
           databricks -v
-          
-          databricks workspace import /shared/demo_notebook.py --file ./demo_notebook.py
+          databricks auth -p workspace
+          databricks workspace list
       # - name: Configure databrick cli
       #   env:
       #     DATABRICKS_HOST: ${{secrets.DATABRICKS_HOST}}
