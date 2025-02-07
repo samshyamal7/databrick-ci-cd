@@ -37,6 +37,10 @@ jobs:
 
       - name: Install Databrick CLI
         run: |
+          echo $DATABRICKS_HOST
+          echo $DATABRICKS_CLIENT
+          echo $DATABRICKS_CLIENT_SECRET
+          echo $account_id
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           echo >> /home/runner/.bashrc
           echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/runner/.bashrc
